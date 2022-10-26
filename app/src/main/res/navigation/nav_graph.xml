@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fullScheduleFragment_to_stopScheduleFragment"
             app:destination="@id/stopScheduleFragment" />
+        <action
+            android:id="@+id/action_fullScheduleFragment_to_inputBusScheduleFragment"
+            app:destination="@id/inputBusScheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/stopScheduleFragment"
@@ -23,4 +26,9 @@
             android:name="stopName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/inputBusScheduleFragment"
+        android:name="com.llc.roomdatabaseeg.input.InputBusScheduleFragment"
+        android:label="fragment_input_bus_schedule"
+        tools:layout="@layout/fragment_input_bus_schedule" />
 </navigation>

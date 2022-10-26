@@ -51,7 +51,7 @@ class BusStopAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SimpleDateFormat")
         fun bind(busScheduleEntity: BusScheduleEntity) {
-            binding.stopNameTextView.text = busScheduleEntity.stopName
+            binding.stopNameTextView.text = busScheduleEntity.busName
             binding.arrivalTimeTextView.text = SimpleDateFormat(
                 "h:mm a").format(Date(busScheduleEntity.arrivalTime.toLong() * 1000)
             )

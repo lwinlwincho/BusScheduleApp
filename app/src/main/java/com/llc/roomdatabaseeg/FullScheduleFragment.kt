@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.coroutineScope
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.llc.roomdatabaseeg.database.schedule.BusScheduleApplication
 import com.llc.roomdatabaseeg.databinding.FragmentFullScheduleBinding
 import com.llc.roomdatabaseeg.viewmodel.BusScheduleViewModel
-import com.llc.roomdatabaseeg.viewmodel.BusScheduleViewModelFactory
-import kotlinx.coroutines.launch
 
 class FullScheduleFragment : Fragment() {
 
@@ -23,11 +19,7 @@ class FullScheduleFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val viewModel: BusScheduleViewModel by activityViewModels {
-        BusScheduleViewModelFactory(
-            (activity?.application as BusScheduleApplication).database.scheduleDao()
-        )
-    }
+    private val viewModel: BusScheduleViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,19 +36,13 @@ class FullScheduleFragment : Fragment() {
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val busStopAdapter = BusStopAdapter({
+        val busStopAdapter = BusStopAdapter {
             val action =
                 FullScheduleFragmentDirections.actionFullScheduleFragmentToStopScheduleFragment(
-                    stopName = it.stopName
+                    stopName = it.busName
                 )
             view.findNavController().navigate(action)
-        })
-        recyclerView.adapter=busStopAdapter
-
-        lifecycle.coroutineScope.launch {
-            viewModel.fullSchedule().collect() {
-                busStopAdapter.submitList(it)
-            }
         }
+        recyclerView.adapter = busStopAdapter
     }
 }

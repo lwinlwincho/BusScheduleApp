@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.llc.roomdatabaseeg.database.entity.BusScheduleEntity
 import com.llc.roomdatabaseeg.databinding.BusStopItemBinding
-import java.text.SimpleDateFormat
-import java.util.*
 
 class BusStopAdapter(
     private val onItemClicked: (BusScheduleEntity) -> Unit

@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.llc.roomdatabaseeg.database.entity.BusScheduleEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ScheduleDao {

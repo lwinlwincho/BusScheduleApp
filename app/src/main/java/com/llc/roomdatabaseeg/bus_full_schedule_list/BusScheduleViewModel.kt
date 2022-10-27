@@ -1,13 +1,11 @@
-package com.llc.roomdatabaseeg.viewmodel
+package com.llc.roomdatabaseeg.bus_full_schedule_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.llc.roomdatabaseeg.database.entity.BusScheduleEntity
-import com.llc.roomdatabaseeg.database.dao.ScheduleDao
 import com.llc.roomdatabaseeg.database.schedule.AppDatabase
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

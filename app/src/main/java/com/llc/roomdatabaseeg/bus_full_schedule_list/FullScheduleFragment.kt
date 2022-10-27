@@ -1,4 +1,4 @@
-package com.llc.roomdatabaseeg
+package com.llc.roomdatabaseeg.bus_full_schedule_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.llc.roomdatabaseeg.BusStopAdapter
 import com.llc.roomdatabaseeg.database.schedule.AppDatabase
 import com.llc.roomdatabaseeg.databinding.FragmentFullScheduleBinding
-import com.llc.roomdatabaseeg.viewmodel.BusScheduleListEvent
-import com.llc.roomdatabaseeg.viewmodel.BusScheduleViewModel
 
 class FullScheduleFragment : Fragment() {
 

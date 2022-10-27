@@ -40,7 +40,7 @@ class InputBusScheduleFragment : Fragment() {
             )
         }
 
-        viewModel.uiEvent.observe(viewLifecycleOwner) {
+        viewModel.inputUiEvent.observe(viewLifecycleOwner) {
             when (it) {
                 is InputBusScheduleEvent.Success -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()

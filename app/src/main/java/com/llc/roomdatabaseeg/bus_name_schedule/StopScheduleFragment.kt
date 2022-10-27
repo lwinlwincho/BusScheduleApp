@@ -1,19 +1,20 @@
-package com.llc.roomdatabaseeg
+package com.llc.roomdatabaseeg.bus_name_schedule
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.coroutineScope
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.llc.roomdatabaseeg.database.schedule.BusScheduleApplication
+import com.llc.roomdatabaseeg.BusStopAdapter
+import com.llc.roomdatabaseeg.bus_full_schedule_list.BusScheduleListEvent
+import com.llc.roomdatabaseeg.bus_full_schedule_list.BusScheduleViewModel
+import com.llc.roomdatabaseeg.database.schedule.AppDatabase
 import com.llc.roomdatabaseeg.databinding.FragmentStopScheduleBinding
-import com.llc.roomdatabaseeg.viewmodel.BusScheduleViewModel
-import kotlinx.coroutines.launch
 
 class StopScheduleFragment : Fragment() {
 
@@ -22,21 +23,30 @@ class StopScheduleFragment : Fragment() {
     }
 
     private var _binding: FragmentStopScheduleBinding? = null
-
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
 
-    private lateinit var stopName: String
+    private val viewModel: BusNameViewModel by viewModels()
 
-    private val viewModel: BusScheduleViewModel by viewModels()
+    private val args: StopScheduleFragmentArgs by navArgs()
+
+    private val appDatabase by lazy {
+        AppDatabase.getDatabase(requireContext())
+    }
+
+    private val busStopAdapter: BusStopAdapter by lazy {
+        BusStopAdapter({})
+    }
+
+    private lateinit var stopName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        arguments?.let {
+       /* arguments?.let {
             stopName = it.getString(STOP_NAME).toString()
-        }
+        }*/
     }
 
     override fun onCreateView(
@@ -54,6 +64,19 @@ class StopScheduleFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val busStopAdapter = BusStopAdapter {}
         recyclerView.adapter = busStopAdapter
+
+        viewModel.getByBusName(appDatabase,args.stopName)
+        viewModel.busNameEvent.observe(viewLifecycleOwner){
+            when (it) {
+                is BusScheduleListEvent.Loading -> {}
+                is BusScheduleListEvent.Success -> {
+                    busStopAdapter.submitList(it.busList)
+                }
+                is BusScheduleListEvent.Failure -> {
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
 }

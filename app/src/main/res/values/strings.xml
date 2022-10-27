@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RoomDatabaseEg</string>
+    <string name="app_name">Bus Schedule App</string>
     <string name="bus_stop_header">Stop Name</string>
     <!-- Shown above right column listing arrival times in full schedule fragment -->
     <string name="arrival_time_header">Arrival Time</string>

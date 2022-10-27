@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FullScheduleFragment">
+    tools:context=".bus_full_schedule_list.FullScheduleFragment">
 
     <TextView
         android:id="@+id/bus_stop_header"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fullScheduleFragment"
-        android:name="com.llc.roomdatabaseeg.FullScheduleFragment"
+        android:name="com.llc.roomdatabaseeg.bus_full_schedule_list.FullScheduleFragment"
         android:label="fragment_full_schedule"
         tools:layout="@layout/fragment_full_schedule">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/stopScheduleFragment"
-        android:name="com.llc.roomdatabaseeg.StopScheduleFragment"
+        android:name="com.llc.roomdatabaseeg.bus_name_schedule.StopScheduleFragment"
         android:label="fragment_stop_schedule"
         tools:layout="@layout/fragment_stop_schedule">
         <argument

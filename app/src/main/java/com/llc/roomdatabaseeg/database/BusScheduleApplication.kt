@@ -1,4 +1,4 @@
-package com.llc.roomdatabaseeg.database.schedule
+package com.llc.roomdatabaseeg.database
 
 import android.app.Application
 

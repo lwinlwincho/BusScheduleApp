@@ -1,4 +1,4 @@
-package com.llc.roomdatabaseeg.database.entity
+package com.llc.roomdatabaseeg.database
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

@@ -12,20 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.llc.roomdatabaseeg.BusStopAdapter
 import com.llc.roomdatabaseeg.bus_full_schedule_list.BusScheduleListEvent
-import com.llc.roomdatabaseeg.bus_full_schedule_list.BusScheduleViewModel
-import com.llc.roomdatabaseeg.database.schedule.AppDatabase
+import com.llc.roomdatabaseeg.database.AppDatabase
 import com.llc.roomdatabaseeg.databinding.FragmentStopScheduleBinding
 
 class StopScheduleFragment : Fragment() {
 
-    companion object {
-        var STOP_NAME = "stopName"
-    }
-
     private var _binding: FragmentStopScheduleBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var recyclerView: RecyclerView
 
     private val viewModel: BusNameViewModel by viewModels()
 
@@ -39,20 +32,10 @@ class StopScheduleFragment : Fragment() {
         BusStopAdapter({})
     }
 
-    private lateinit var stopName: String
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-       /* arguments?.let {
-            stopName = it.getString(STOP_NAME).toString()
-        }*/
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentStopScheduleBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -60,10 +43,10 @@ class StopScheduleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val busStopAdapter = BusStopAdapter {}
-        recyclerView.adapter = busStopAdapter
+        binding.recyclerView.apply {
+            layoutManager=LinearLayoutManager(requireContext())
+            adapter=busStopAdapter
+        }
 
         viewModel.getByBusName(appDatabase,args.stopName)
         viewModel.busNameEvent.observe(viewLifecycleOwner){
@@ -78,5 +61,4 @@ class StopScheduleFragment : Fragment() {
             }
         }
     }
-
 }

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.llc.roomdatabaseeg.database.entity.BusScheduleEntity
-import com.llc.roomdatabaseeg.database.schedule.AppDatabase
+import com.llc.roomdatabaseeg.database.BusScheduleEntity
+import com.llc.roomdatabaseeg.database.AppDatabase
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -15,7 +15,6 @@ class BusScheduleViewModel : ViewModel() {
     val busScheduleListEvent: LiveData<BusScheduleListEvent> = _busScheduleListEvent
 
     fun getAllBusSchedule(appDatabase: AppDatabase) {
-        _busScheduleListEvent.value = BusScheduleListEvent.Loading
 
         viewModelScope.launch {
             try {
@@ -30,7 +29,7 @@ class BusScheduleViewModel : ViewModel() {
 }
 
 sealed class BusScheduleListEvent {
+    object Loading : BusScheduleListEvent()
     data class Success(val busList: List<BusScheduleEntity>) : BusScheduleListEvent()
     data class Failure(val message: String) : BusScheduleListEvent()
-    object Loading : BusScheduleListEvent()
 }

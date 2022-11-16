@@ -4,7 +4,7 @@
     package="com.llc.roomdatabaseeg">
 
     <application
-        android:name="com.llc.roomdatabaseeg.database.schedule.BusScheduleApplication"
+        android:name="com.llc.roomdatabaseeg.database.BusScheduleApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

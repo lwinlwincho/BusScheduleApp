@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.llc.roomdatabaseeg.database.entity.BusScheduleEntity
-import com.llc.roomdatabaseeg.database.schedule.AppDatabase
+import com.llc.roomdatabaseeg.database.BusScheduleEntity
+import com.llc.roomdatabaseeg.database.AppDatabase
 import kotlinx.coroutines.launch
 
 class InputBusScheduleViewModel : ViewModel() {
@@ -18,7 +18,6 @@ class InputBusScheduleViewModel : ViewModel() {
         busName: String,
         time: String
     ) {
-
         viewModelScope.launch {
             try {
                 val entity = BusScheduleEntity(

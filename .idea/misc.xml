@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BusScheduleApp/app/src/main/res/layout/activity_main.xml" value="0.15172101449275363" />
+        <entry key="..\:/BusScheduleApp/app/src/main/res/layout/bus_stop_item.xml" value="0.15172101449275363" />
+        <entry key="..\:/BusScheduleApp/app/src/main/res/layout/fragment_full_schedule.xml" value="0.1082427536231884" />
+        <entry key="..\:/BusScheduleApp/app/src/main/res/layout/fragment_input_bus_schedule.xml" value="0.15172101449275363" />
         <entry key="..\:/RoomDatabaseEg/app/src/main/res/layout/activity_main.xml" value="0.15172101449275363" />
         <entry key="..\:/RoomDatabaseEg/app/src/main/res/layout/bus_stop_item.xml" value="0.15172101449275363" />
         <entry key="..\:/RoomDatabaseEg/app/src/main/res/layout/fragment_full_schedule.xml" value="0.5509868421052632" />

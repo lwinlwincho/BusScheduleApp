@@ -1,10 +1,9 @@
-package com.llc.roomdatabaseeg.database.dao
+package com.llc.roomdatabaseeg.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.llc.roomdatabaseeg.database.entity.BusScheduleEntity
 
 @Dao
 interface ScheduleDao {

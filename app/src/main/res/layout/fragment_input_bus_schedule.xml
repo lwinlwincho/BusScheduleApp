@@ -4,24 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".input.InputBusScheduleFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="@string/add_bus_schedule"/>
 
     <EditText
         android:id="@+id/edit_bus_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="16sp"
         android:hint="Bus Name" />
 
     <EditText
         android:id="@+id/edit_time"
         android:layout_width="match_parent"
+        android:textSize="16sp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:hint="Time" />
 
     <Button
         android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="ok" />
 </LinearLayout>

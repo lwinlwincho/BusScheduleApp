@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface ScheduleDao {
+interface BusDao {
     @Query("Select * from busscheduleentity ORDER BY arrival_time ASC")
     fun getAll(): List<BusScheduleEntity>
 

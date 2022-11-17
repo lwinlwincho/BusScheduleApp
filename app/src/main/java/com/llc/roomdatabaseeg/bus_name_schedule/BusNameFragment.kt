@@ -9,24 +9,25 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.llc.roomdatabaseeg.BusStopAdapter
 import com.llc.roomdatabaseeg.bus_full_schedule_list.BusScheduleListEvent
-import com.llc.roomdatabaseeg.database.AppDatabase
+import com.llc.roomdatabaseeg.database.BusRoomDatabase
 import com.llc.roomdatabaseeg.databinding.FragmentStopScheduleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class StopScheduleFragment : Fragment() {
+@AndroidEntryPoint
+class BusNameFragment : Fragment() {
 
     private var _binding: FragmentStopScheduleBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: BusNameViewModel by viewModels()
 
-    private val args: StopScheduleFragmentArgs by navArgs()
+    private val args: BusNameFragmentArgs by navArgs()
 
-    private val appDatabase by lazy {
-        AppDatabase.getDatabase(requireContext())
-    }
+  /*  private val appDatabase by lazy {
+       // BusRoomDatabase.getDatabase(requireContext())
+    }*/
 
     private val busStopAdapter: BusStopAdapter by lazy {
         BusStopAdapter({})
@@ -48,7 +49,7 @@ class StopScheduleFragment : Fragment() {
             adapter=busStopAdapter
         }
 
-        viewModel.getByBusName(appDatabase,args.stopName)
+        viewModel.getByBusName(args.stopName)
         viewModel.busNameEvent.observe(viewLifecycleOwner){
             when (it) {
                 is BusScheduleListEvent.Loading -> {}

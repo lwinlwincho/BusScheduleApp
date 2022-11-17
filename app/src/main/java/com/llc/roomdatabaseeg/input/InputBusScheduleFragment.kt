@@ -8,10 +8,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.llc.roomdatabaseeg.database.AppDatabase
+import com.llc.roomdatabaseeg.database.BusRoomDatabase
 import com.llc.roomdatabaseeg.databinding.FragmentInputBusScheduleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InputBusScheduleFragment : Fragment() {
+
     private var _binding: FragmentInputBusScheduleBinding? = null
     private val binding get() = _binding!!
 
@@ -29,12 +32,12 @@ class InputBusScheduleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val appDatabase = AppDatabase.getDatabase(requireContext())
+       // val appDatabase = BusRoomDatabase.getDatabase(requireContext())
 
         binding.btnOk.setOnClickListener {
 
             viewModel.addBusSchedule(
-                appDatabase = appDatabase,
+               // appDatabase = appDatabase,
                 busName = binding.editBusName.text.toString(),
                 time = binding.editTime.text.toString()
             )

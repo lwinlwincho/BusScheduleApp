@@ -10,11 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.llc.roomdatabaseeg.BusStopAdapter
-import com.llc.roomdatabaseeg.database.AppDatabase
+import com.llc.roomdatabaseeg.database.BusRoomDatabase
 import com.llc.roomdatabaseeg.databinding.FragmentFullScheduleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FullScheduleFragment : Fragment() {
 
     private var _binding: FragmentFullScheduleBinding? = null
@@ -23,9 +24,9 @@ class FullScheduleFragment : Fragment() {
     private val viewModel: BusScheduleViewModel by viewModels()
 
     // create database
-    private val appDatabase by lazy {
-        AppDatabase.getDatabase(requireContext())
-    }
+   /* private val appDatabase by lazy {
+        BusRoomDatabase.getDatabase(requireContext())
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +53,7 @@ class FullScheduleFragment : Fragment() {
 
         }
 
-        viewModel.getAllBusSchedule(appDatabase)
+        viewModel.getAllBusSchedule()
         viewModel.busScheduleListEvent.observe(viewLifecycleOwner) {
             when (it) {
                 is BusScheduleListEvent.Success -> {

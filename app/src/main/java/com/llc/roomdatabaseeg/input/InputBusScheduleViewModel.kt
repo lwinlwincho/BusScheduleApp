@@ -4,17 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.llc.roomdatabaseeg.database.BusDao
 import com.llc.roomdatabaseeg.database.BusScheduleEntity
-import com.llc.roomdatabaseeg.database.AppDatabase
+import com.llc.roomdatabaseeg.database.BusRoomDatabase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class InputBusScheduleViewModel : ViewModel() {
+@HiltViewModel
+class InputBusScheduleViewModel @Inject constructor(
+    private val busDao: BusDao
+) : ViewModel() {
 
     private var _inputUiEvent = MutableLiveData<InputBusScheduleEvent>()
     val inputUiEvent: LiveData<InputBusScheduleEvent> = _inputUiEvent
 
     fun addBusSchedule(
-        appDatabase: AppDatabase,
         busName: String,
         time: String
     ) {
@@ -24,7 +29,7 @@ class InputBusScheduleViewModel : ViewModel() {
                     busName = busName,
                     arrivalTime = time
                 )
-                appDatabase.scheduleDao().addBusScheduleEntity(entity)
+                busDao.addBusScheduleEntity(entity)
                 _inputUiEvent.postValue(InputBusScheduleEvent.Success("Successfully Added!"))
             } catch (e: Exception) {
                 _inputUiEvent.postValue(InputBusScheduleEvent.Failure(e.message.toString()))

@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/stopScheduleFragment"
-        android:name="com.llc.roomdatabaseeg.bus_name_schedule.StopScheduleFragment"
+        android:name="com.llc.roomdatabaseeg.bus_name_schedule.BusNameFragment"
         android:label="fragment_stop_schedule"
         tools:layout="@layout/fragment_stop_schedule">
         <argument

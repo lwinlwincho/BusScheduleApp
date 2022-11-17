@@ -6,18 +6,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [BusScheduleEntity::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun scheduleDao(): ScheduleDao
+abstract class BusRoomDatabase : RoomDatabase() {
+    abstract fun busDao(): BusDao
 
-    companion object {
+   /* companion object {
         @Volatile
-        private var INSTANCE: AppDatabase? = null
+        private var INSTANCE: BusRoomDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
+        fun getDatabase(context: Context): BusRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context,
-                    AppDatabase::class.java,
+                    BusRoomDatabase::class.java,
                     "main-database"
                 )
                     .allowMainThreadQueries()
@@ -28,5 +28,5 @@ abstract class AppDatabase : RoomDatabase() {
                 instance
             }
         }
-    }
+    }*/
 }
